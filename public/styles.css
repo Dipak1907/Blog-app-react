@@ -1,0 +1,97 @@
+html, body {
+    height: 100%;
+    margin: 0;
+    background-color: #FEF9F2;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  min-height: 100vh; /* Full viewport height */
+}
+
+
+.header {
+  background-color: #FFE3E3;
+  margin: -16px;
+  margin-bottom: 10px;
+  padding: 5px 20px;
+  text-align: center;
+}
+
+.footer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 10px;
+  background-color: rgb(41, 198, 182);
+
+}
+
+
+.postform {
+  display: flex;
+  gap: 20px;
+  flex-direction: column;
+  flex-wrap: wrap;
+  align-content: center;
+  height: 100vh;
+}
+
+.post {
+  width: 50%;
+  height: 50px;
+  border-radius: 10px;
+  border: 2px solid #A594F9;
+  font-size: 1rem;
+}
+
+.postContainer {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.postItem {
+  background-color: #fff;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+}
+
+#CreatePostButton {
+  display: flex;
+  justify-content: flex-end;
+  margin: 20px;
+  margin-right: 20px;
+}
+
+.post-title {
+  font-size: 1.5rem;
+  color: #333;
+}
+
+.post-content {
+  font-size: 1rem;
+}
+
+.postButton {
+  display: inline-block;
+  margin-top: 5px;
+}
+
+#editbutton {
+  margin-right: 10px;
+}
+
+.textarea {
+  width: 50%;
+  height: 250px;
+  border-radius: 10px;
+}
+
+span {
+  font-weight: bold;
+}
