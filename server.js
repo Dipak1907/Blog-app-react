@@ -16,7 +16,7 @@ const db = new pg.Client({
   user: "postgres",
   host: "localhost",
   database: "react-blog-db",
-  password: "Danny7589",
+  password: "",
   port: 5432,
 });
 db.connect();
