@@ -30,7 +30,7 @@ app.get("/", (req, res) => {
 
 // add the new post data to database
 app.post("/posts", async (req, res) => {
-    const { title, content, author } = req.body;
+    const { title, content, author, created_at_string } = req.body;
 
     if (!title || !content || !author) {
         return res.status(400).json({ message: "All fields are required"});
@@ -38,8 +38,8 @@ app.post("/posts", async (req, res) => {
 
     try {
         const result = await db.query(
-            'INSERT INTO posts (title, content, author) VALUES ($1, $2, $3) RETURNING *', 
-            [title, content, author]
+            'INSERT INTO posts (title, content, author, created_at_string) VALUES ($1, $2, $3, $4) RETURNING *', 
+            [title, content, author, created_at_string]
         );
         res.status(201).json(result.rows[0]);
     } catch (error) {
@@ -51,7 +51,7 @@ app.post("/posts", async (req, res) => {
 // fetch all the posts
 app.get('/posts', async (req, res) => {
     try {
-        const result = await db.query("Select * FROM posts ORDER BY created_at DESC");
+        const result = await db.query("Select * FROM posts ORDER BY created_at_string DESC");
         res.json(result.rows);
     } catch (error) {
         console.error("Error fetching posts", error);
@@ -74,7 +74,7 @@ app.get("/posts/:id", async (req, res) => {
 // update an existing post
 app.put('/posts/:id', async (req, res) => {
     const { id } = req.params;
-    const { title, content, author } = req.body;
+    const { title, content, author, created_at_string } = req.body;
   
     if (!title || !content || !author) {
       return res.status(400).json({ message: 'All fields are required' });
@@ -82,8 +82,8 @@ app.put('/posts/:id', async (req, res) => {
   
     try {
       const result = await db.query(
-        'UPDATE posts SET title = $1, content = $2, author = $3 WHERE id = $4 RETURNING *',
-        [title, content, author, id]
+        'UPDATE posts SET title = $1, content = $2, author = $3, created_at_string = $4 WHERE id = $5 RETURNING *',
+        [title, content, author, created_at_string, id]
       );
   
       if (result.rowCount === 0) {
